@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anam Younas - Professional CV</title>
+<style>
+  /* Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef3f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.65;
+  }
+
+  main.container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 40px 50px;
+    box-shadow: 0 0 25px rgba(33, 150, 243, 0.15);
+    border-radius: 12px;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .profile-pic {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #2196f3;
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
+  }
+
+  .header-info {
+    flex: 1 1 300px;
+  }
+
+  .header-info h1 {
+    margin: 0 0 8px;
+    font-size: 2.8rem;
+    color: #2196f3;
+  }
+
+  .header-info p.title {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #555;
+    margin: 0 0 12px;
+  }
+
+  .contact-info {
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .contact-info span,
+  .contact-info a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+  .contact-info a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+  }
+
+  /* Icons */
+  .icon-email::before { content: "✉️"; }
+  .icon-phone::before { content: "📞"; }
+  .icon-linkedin::before { content: "🔗"; }
+
+  /* Section heading styling as dropdown toggle */
+  section {
+    border-top: 3px solid #2196f3;
+    padding-top: 8px;
+    margin-top: 20px;
+  }
+
+  section h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #0d47a1;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    user-select: none;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Arrow icon for toggle */
+  section h2::after {
+    content: "▼";
+    font-size: 1.2rem;
+    color: #2196f3;
+    transition: transform 0.3s ease;
+  }
+
+  section.collapsed h2::after {
+    transform: rotate(-90deg);
+  }
+
+  /* Content wrapper for collapsible content */
+  .content {
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    max-height: 2000px; /* large enough */
+    padding-top: 12px;
+  }
+
+  section.collapsed .content {
+    max-height: 0;
+    padding-top: 0;
+  }
+
+  /* Justify text except inline lists */
+  p, ul:not(.inline-list) {
+    margin: 0;
+    text-align: justify;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.inline-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    text-align: left; /* override justify */
+  }
+
+  ul.inline-list li {
+    background: #e3f2fd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #0d47a1;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.15);
+    transition: background-color 0.3s ease;
+  }
+
+  ul.inline-list li:hover {
+    background: #bbdefb;
+  }
+
+  .item {
+    margin-bottom: 24px;
+  }
+
+  .item h3 {
+    margin: 0 0 4px;
+    font-size: 1.3rem;
+    color: #1565c0;
+  }
+
+  .item .date-location {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .item ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+
+  .item ul li {
+    margin-bottom: 6px;
+    color: #444;
+  }
+
+  .reference-item {
+    margin-bottom: 20px;
+  }
+
+  .reference-item strong {
+    color: #1565c0;
+  }
+
+  .reference-item a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+  .reference-item a:hover {
+    text-decoration: underline;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 50px;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    main.container {
+      padding: 30px 20px;
+    }
+
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .header-info {
+      flex: none;
+      width: 100%;
+    }
+
+    .item .date-location {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+    }
+
+    .header-info h1 {
+      font-size: 2rem;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+    }
+
+    p, ul:not(.inline-list) {
+      text-align: left; /* avoid justification on very narrow */
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    body {
+      background: white;
+      padding: 0;
+      line-height: 1.4;
+    }
+    main.container {
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0;
+      max-width: 100%;
+    }
+    section h2 {
+      cursor: default;
+    }
+    section.collapsed {
+      border-top: 3px solid #2196f3;
+    }
+    section .content {
+      max-height: none !important;
+      padding-top: 12px !important;
+      overflow: visible !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <img src="fotor_2023-5-30_5_35_14.png" alt="Photo of Anam Younas" class="profile-pic" />
+      <div class="header-info">
+        <h1>Anam Younas</h1>
+        <p class="title">Professional Content Writer & Passionate ICT Educator</p>
+        <div class="contact-info" role="contentinfo">
+          <span class="icon-email" aria-label="Email"> <a href="mailto:anamyounasapsmsg@gmail.com">anamyounasapsmsg@gmail.com</a></span>
+          <span class="icon-phone" aria-label="Phone">+92 336 6900406</span>
+          <span class="icon-linkedin" aria-label="LinkedIn Profile"><a href="https://www.linkedin.com/in/anam-younas-apsmsg/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></span>
+          <span aria-label="Location">Lahore, Pakistan</span>
+        </div>
+      </div>
+    </header>
+
+    <section id="philosophy">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="philosophy-content">My Philosophy</h2>
+      <div class="content" id="philosophy-content" role="region" aria-live="polite">
+        <p>“As a content writer and educator, I strive to simplify complex ideas and make them engaging for diverse audiences.”</p>
+        <p>My goal is to inspire curiosity and promote critical thinking through clear communication and inclusive teaching.</p>
+      </div>
+    </section>
+
+    <section id="strengths">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="strengths-content">Strengths</h2>
+      <div class="content" id="strengths-content" role="region" aria-live="polite">
+        <ul class="inline-list">
+          <li>Hard-working</li>
+          <li>Persuasive</li>
+          <li>Effective Communication</li>
+          <li>Strong Research Skills</li>
+          <li>Creative Writing</li>
+          <li>Result-oriented</li>
+          <li>Innovative Teaching</li>
+          <li>SEO Proficiency</li>
+          <li>Assessment & Feedback</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="languages">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="languages-content">Languages</h2>
+      <div class="content" id="languages-content" role="region" aria-live="polite">
+        <ul class="inline-list">
+          <li>English (Fluent)</li>
+          <li>Hindi/Urdu (Fluent)</li>
+          <li>Arabic (Intermediate)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="experience-content">Experience</h2>
+      <div class="content" id="experience-content" role="region" aria-live="polite">
+        <div class="item">
+          <h3>Content Writer (Freelance/Contract) - One Call Solution</h3>
+          <div class="date-location">Sept 2022 – Present | Lahore, Pakistan</div>
+          <ul>
+            <li>Developed high-quality survey papers for international universities.</li>
+            <li>SEO expert creating optimized website content for better ranking and engagement.</li>
+            <li>Provided thesis writing services blending academic rigor and accessibility.</li>
+            <li>Conducted in-depth research and created style guides for consistent content.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Head Of The Department - Computer Science - Army Public School Mahfooz Shaheed Garrison</h3>
+          <div class="date-location">Aug 2017 – Feb 2023 | Lahore, Pakistan</div>
+          <ul>
+            <li>Led strategic vision and curriculum coordination for Computer Science department.</li>
+            <li>Managed school's website and social media content.</li>
+            <li>Supervised student research projects and published IT research papers.</li>
+            <li>Provided technical support for AIS portal users.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Computer Coordinator - DHA Education System</h3>
+          <div class="date-location">Oct 2016 – May 2017 | Lahore, Pakistan</div>
+          <ul>
+            <li>Developed IT policies and procedures.</li>
+            <li>Trained staff on secure and efficient computer usage.</li>
+            <li>Proposed innovative technology solutions.</li>
+            <li>Managed computer labs infrastructure.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>SSC Computer Teacher - Army Public School</h3>
+          <div class="date-location">Nov 2012 – Oct 2016 | Lahore, Pakistan</div>
+          <ul>
+            <li>Developed curriculum and instructional materials.</li>
+            <li>Used varied teaching methods for different learning styles.</li>
+            <li>Mentored students and conducted workshops.</li>
+            <li>Provided technical support and troubleshooting.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="education-content">Education</h2>
+      <div class="content" id="education-content" role="region" aria-live="polite">
+        <div class="item">
+          <h3>MSC IT</h3>
+          <div class="date-location">Punjab University College of Information Technology, Lahore, Pakistan</div>
+        </div>
+        <div class="item">
+          <h3>Bachelor of Science in Computer Science</h3>
+          <div class="date-location">Air University, Lahore, Pakistan</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="certifications-content">Certifications</h2>
+      <div class="content" id="certifications-content" role="region" aria-live="polite">
+        <ul>
+          <li>Human Resource Management | Kinnaird College | 2023</li>
+          <li>Search Engine Optimization | DigiSkills | 2022</li>
+          <li>Domain Marketing | Proxy Media - Dubai | 2022</li>
+          <li>ICATS | International Center for Automotive Technology | 2019</li>
+          <li>Bebra’s Informatics Contest | 2019</li>
+          <li>Computer Science / IT | Oxford Press | 2017</li>
+          <li>Professionalism in Teaching | LGES | 2013</li>
+          <li>CALL - Computer Assisted Language Learning | LGES | 2013</li>
+          <li>21st Century Skills | LGES | 2013</li>
+          <li>Teaching With Education Technology | LGES | 2013</li>
+          <li>Best MSC IT FY Project - Islamic Corner Android App | SoftExpo | 2012</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="technical-skills">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="technical-skills-content">Technical Skills</h2>
+      <div class="content" id="technical-skills-content" role="region" aria-live="polite">
+        <ul class="inline-list">
+          <li>Microsoft Office (Word, Excel, PowerPoint, OneNote, Access, Project)</li>
+          <li>LaTex, GitHub, Figma, Prezi, Adobe Photoshop, Shopify, xRecorder</li>
+          <li>Filmigo, Canva, Notepad, Eclipse, Zoom, Skype, AnyDesk</li>
+          <li>HTML, CSS, WordPress, C, C++, Java, JavaScript, SQL, Oracle</li>
+        </ul>
+        <ul class="inline-list" style="margin-top: 12px;">
+          <li>Communication & Presentation</li>
+          <li>Leadership & Coaching</li>
+          <li>Problem-solving</li>
+          <li>Teamwork & Collaboration</li>
+          <li>Patience & Empathy</li>
+          <li>Adaptability</li>
+          <li>Research & Analytical Skills</li>
+          <li>Attention to Detail</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="references">
+      <h2 tabindex="0" aria-expanded="true" aria-controls="references-content">Professional References</h2>
+      <div class="content" id="references-content" role="region" aria-live="polite">
+        <div class="reference-item">
+          <p><strong>Mrs. Maimoona Shareef</strong><br />
+          Principal – Army Public School<br />
+          Email: <a href="mailto:maimona.s@gmail.com">maimona.s@gmail.com</a></p>
+        </div>
+        <div class="reference-item">
+          <p><strong>Mrs. Shagufta Adil</strong><br />
+          Principal – Army Public School Mahfooz Shaheed Garrison<br />
+          Email: <a href="mailto:shaguftaadil@yahoo.com">shaguftaadil@yahoo.com</a></p>
+        </div>
+        <div class="reference-item">
+          <p><strong>M Saad Shah</strong><br />
+          CEO – One Call Solution Lahore<br />
+          Email: <a href="mailto:saadshah185@gmail.com">saadshah185@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>© 2025 Anam Younas - All rights reserved.</p>
+    </div>
+  </main>
+
+<script>
+  // Collapse/expand sections on heading click or Enter/Space key
+  document.querySelectorAll('section h2').forEach(header => {
+    header.addEventListener('click', () => {
+      toggleSection(header.parentElement);
+    });
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleSection(header.parentElement);
+      }
+    });
+  });
+
+  function toggleSection(section) {
+    const isCollapsed = section.classList.toggle('collapsed');
+    const header = section.querySelector('h2');
+    const content = section.querySelector('.content');
+    if (isCollapsed) {
+      header.setAttribute('aria-expanded', 'false');
+      content.style.maxHeight = '0';
+      content.style.paddingTop = '0';
+    } else {
+      header.setAttribute('aria-expanded', 'true');
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.paddingTop = '12px';
+    }
+  }
+
+  // Initialize all content maxHeight for expanded sections
+  window.addEventListener('load', () => {
+    document.querySelectorAll('section').forEach(section => {
+      if (!section.classList.contains('collapsed')) {
+        const content = section.querySelector('.content');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        const content = section.querySelector('.content');
+        content.style.maxHeight = '0';
+        content.style.paddingTop = '0';
+      }
+    });
+  });
+</script>
+</body>
+</html>
